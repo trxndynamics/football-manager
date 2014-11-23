@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('login', 'AuthController@create');
+Route::get('logout', 'AuthController@destroy');
+Route::get('dashboard', function(){ return 'DASHBOARD';});
+
+Route::resource('auth', 'AuthController');
+Route::resource('users', 'UsersController');
