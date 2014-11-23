@@ -8,5 +8,11 @@
             "name": "Martin Evans",
             "email": "martin.evans@phpcoder.guru"
         }
-    ]
+    ],
+    "require": {
+        "laravel/framework": "4.2.*",
+        "jenssegers/mongodb": "dev-master",
+        "jenssegers/mongodb-session": "dev-master",
+        "jenssegers/mongodb-sentry": "~1.0"
+    }
 }

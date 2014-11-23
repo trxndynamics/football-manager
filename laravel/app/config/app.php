@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	'debug' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return array(
 	|
 	*/
 
-	'key' => 'qMcBtzVENjREnJtgcFiFX1zYLgWZhL9t',
+	'key' => 'tO8pgomCDN5AWwXHu9XhHPCqmOGt3BrW',
 
 	'cipher' => MCRYPT_RIJNDAEL_128,
 
@@ -121,7 +121,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-
+        'Jenssegers\Mongodb\MongodbServiceProvider',
+        'Jenssegers\Mongodb\Session\SessionServiceProvider',
 	),
 
 	/*
@@ -188,7 +189,7 @@ return array(
 		'URL'               => 'Illuminate\Support\Facades\URL',
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
-
+        'Moloquent'         => 'Jenssegers\Mongodb\Model',
 	),
 
 );

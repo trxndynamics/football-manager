@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'default' => 'mysql',
+	'default' => 'mongodb',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -120,5 +120,14 @@ return array(
 		),
 
 	),
+
+    'mongodb' => array(
+        'driver'   => 'mongodb',
+        'host'     => 'localhost',
+        'port'     => 27017,
+        'username' => 'fmUser',
+        'password' => 'fmPass',
+        'database' => 'football-manager'
+    ),
 
 );
