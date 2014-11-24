@@ -12,7 +12,7 @@ class AuthController extends BaseController {
 
     public function store(){
         if(Auth::attempt(Input::only('email','password'))){
-            return Redirect::to('/admin');
+            return Redirect::to('/dashboard');
         }
 
         return Redirect::back()->withInput();
