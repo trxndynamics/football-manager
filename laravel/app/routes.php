@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@showWelcome');
 
 Route::get('login', 'AuthController@create');
 Route::get('logout', 'AuthController@destroy');
-Route::get('dashboard', function(){ return 'DASHBOARD';});
+Route::get('dashboard', 'DashboardController@index');
 
 Route::resource('auth', 'AuthController');
 Route::resource('users', 'UsersController');
