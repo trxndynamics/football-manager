@@ -5,7 +5,6 @@ class DashboardController extends BaseController {
     public function index()
     {
         //todo setup dashboard mainpage
-        return 'Dashboard';
+        return  View::make('dashboard/index');
     }
-
 }
