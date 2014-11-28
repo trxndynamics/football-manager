@@ -10,7 +10,13 @@
     </div>
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
+
+    @if(!isset($hideSideNav))
         @include('layouts/default/parts/sidenav')
+    @endif
+
+    @if(!isset($hideTopNav))
         @include('layouts/default/parts/topnav')
+    @endif
     </div>
 </nav>
