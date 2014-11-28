@@ -31,7 +31,7 @@
 @if(isset($hideNav))
     @yield('content')
 @else
-<div id="wrapper">
+<div @if(!isset($hideSideNav)) id="wrapper" @endif>
     @include('layouts/default/parts/nav')
     @yield('content')
 </div>
