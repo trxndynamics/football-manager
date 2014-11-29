@@ -21,26 +21,29 @@
 @stop
 
 @section('content')
+    {{ Form::open(array('url' => 'game/generate')) }}
     <table id="selectLeagues" class="display responsive nowrap" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-                    <th>Selected Nations</th>
-                    <th>Full Detail&#63;</th>
-                    <th>Start Date</th>
-                    <th>Active Divisions</th>
-                </tr>
-            </thead>
+        <thead>
+            <tr>
+                <th>Selected Nations</th>
+                <th>Full Detail&#63;</th>
+                <th>Start Date</th>
+                <th>Active Divisions</th>
+            </tr>
+        </thead>
 
-            <tbody>
-                @foreach(Config::get('basegame') as $nation => $baseGameItem)
-                <tr>
-                    <td>{{ Form::checkbox($nation.'_selected', 'value') }} {{ $baseGameItem['display_name'] }}</td>
-                    <td>{{ Form::checkbox($nation.'_full_detail', 'value') }}</td>
-                    <td>{{ \Carbon\Carbon::createFromFormat('m',$baseGameItem['start_month'])->format('M Y') }}</td>
-                    <td>{{
-                    Form::select('leagues', $baseGameItem['divisions'], 0) }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <tbody>
+            @foreach(Config::get('basegame') as $nation => $baseGameItem)
+            <tr>
+                <td>{{ Form::checkbox('selected['.$nation.']', $nation) }} {{ $baseGameItem['display_name'] }}</td>
+                <td>{{ Form::checkbox('full_detail['.$nation.']', 'true') }}</td>
+                <td>{{ \Carbon\Carbon::createFromFormat('m',$baseGameItem['start_month'])->format('M Y') }}</td>
+                <td>{{
+                Form::select('division['.$nation.'][depth]', $baseGameItem['divisions'], 0) }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    {{ Form::submit('Create Game') }}
+    {{ Form::close() }}
 @stop
