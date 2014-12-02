@@ -1,11 +1,18 @@
 <?php
 
 return [
+    '_demo' => [
+        'display_name'  => '_Demo',
+        'start_month'   => 1,
+        'divisions'     => [
+            'Demo'
+        ]
+    ],
     'argentina' => [
         'display_name'  => 'Argentina',
         'start_month'   => 6,
         'divisions'     => [
-            'Primera División Only',
+            'Primera División',
             'Torneo Nacional',
         ]
     ],
@@ -84,7 +91,7 @@ return [
         'display_name'  => 'England',
         'start_month'   => 7,
         'divisions'     => [
-            'Premier Division Only',
+            'Premier Division',
             'First Division',
             'Second Division',
             'Third Division',
@@ -112,7 +119,7 @@ return [
         'display_name'  => 'Germany',
         'start_month'   => 6,
         'divisions'     => [
-            'Bundesliga Only',
+            'Bundesliga',
             '2. Bundesliga',
             '3. Liga',
         ]
