@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -10,8 +9,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::get('/', 'HomeController@showWelcome');
+Route::get('login', 'AuthController@create');
+Route::get('logout', 'AuthController@destroy');
+Route::get('dashboard', 'DashboardController@index');
+Route::get('game/create', 'GameController@create');
+Route::post('game/generate', 'GameController@generate');
+Route::resource('auth', 'AuthController');
+Route::resource('users', 'UsersController');
