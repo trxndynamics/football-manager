@@ -28,7 +28,7 @@ class GameController extends BaseController {
     }
 
     public function registerManager(){
-        //todo create game based on provided settings
+        //todo create game based on manager settings
         return View::make('game/manager-detail')
             ->with('hideSideNav', true)
             ->with('hideTopNav', true)

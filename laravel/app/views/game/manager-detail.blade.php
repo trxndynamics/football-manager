@@ -68,11 +68,10 @@
                 </div>
 
                 <div>
-                    {{ Form::submit('Login') }}
+                    {{ Form::submit('Confirm') }}
                 </div>
             </div>
         </div>
     </section>
-    {{ Form::submit('Create Game') }}
     {{ Form::close() }}
 @stop
