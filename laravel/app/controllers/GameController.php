@@ -13,19 +13,34 @@ class GameController extends BaseController {
         foreach($data['division'] as $k=>$v){
             if(!in_array($k, $data['selected']))    unset($data['division'][$k]);
         }
-        foreach($data['full_detail'] as $k=>$v){
-            if(!in_array($k, $data['selected']))    unset($data['full_detail'][$k]);
+
+        if(isset($data['full_detail'])) {
+            foreach ($data['full_detail'] as $k => $v) {
+                if (!in_array($k, $data['selected'])) unset($data['full_detail'][$k]);
+            }
         }
+
         //todo create game based on provided settings
-        var_dump($data);
-        return '';
+        return View::make('game/manager-detail')
+            ->with('hideSideNav', true)
+            ->with('hideTopNav', true)
+        ;
     }
+
+    public function registerManager(){
+        //todo create game based on provided settings
+        return View::make('game/manager-detail')
+            ->with('hideSideNav', true)
+            ->with('hideTopNav', true)
+            ;
+    }
+
     public function create()
     {
         //todo setup dashboard mainpage
         return View::make('game/new-game')
             ->with('hideSideNav', true)
             ->with('hideTopNav', true)
-            ;
+        ;
     }
 }

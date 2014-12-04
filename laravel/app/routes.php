@@ -15,5 +15,6 @@ Route::get('logout', 'AuthController@destroy');
 Route::get('dashboard', 'DashboardController@index');
 Route::get('game/create', 'GameController@create');
 Route::post('game/generate', 'GameController@generate');
+Route::post('game/register-manager', 'GameController@registerManager');
 Route::resource('auth', 'AuthController');
 Route::resource('users', 'UsersController');
