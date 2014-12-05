@@ -98,55 +98,70 @@
 
 <!-- Register Section -->
 <section id="register" class="container content-section text-center">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-            <h2>Register</h2>
-            {{ Form::open(['route'=>'users.store']) }}
-                <div>
-                    {{ Form::label('email', 'Email:') }}
-                    {{ Form::email('email') }}
-                </div>
+{{ Form::open(['route'=>'users.store']) }}
+    <div class="row centered-form">
+      <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Register</h3>
+          </div>
+          <div class="panel-body">
+              <div class="form-group">
+                  {{ Form::email('email', null, array('class'=>'form-control input-sm','placeholder'=>'Email Address')) }}
+              </div>
 
-                <div>
-                    {{ Form::label('username', 'Username:') }}
-                    {{ Form::text('username') }}
-                </div>
+              <div class="form-group">
+                  {{ Form::text('username', null, array('class'=>'form-control input-sm','placeholder'=>'Username')) }}
+              </div>
 
-                <div>
-                    {{ Form::label('password', 'Password:') }}
-                    {{ Form::password('password') }}
-                </div>
+              <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                          {{ Form::password('password', array('class'=>'form-control input-sm','placeholder'=>'Password')) }}
+                      </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                      <div class="form-group">
+                          {{ Form::password('verify', array('class'=>'form-control input-sm','placeholder'=>'Verify Password')) }}
+                      </div>
+                  </div>
+              </div>
 
-                <div>
-                    {{ Form::submit('Register') }}
-                </div>
-            {{ Form::close() }}
+              {{ Form::submit('Register', array('class'=>'btn btn-info btn-block')) }}
+          </div>
         </div>
+      </div>
     </div>
+    {{ Form::close() }}
 </section>
 
 <!-- Login Section -->
 <section id="login" class="container content-section text-center">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-            <h2>Login</h2>
-            {{ Form::open(['route'=>'auth.store']) }}
-            <div>
-                {{ Form::label('email', 'Email:') }}
-                {{ Form::email('email') }}
-            </div>
+{{ Form::open(['route'=>'auth.store']) }}
+    <div class="row centered-form">
+      <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Login</h3>
+          </div>
+          <div class="panel-body">
 
-            <div>
-                {{ Form::label('password', 'Password:') }}
-                {{ Form::password('password') }}
-            </div>
+              <div class="form-group">
+                  {{ Form::email('email', null, array('class'=>'form-control input-sm','placeholder'=>'Email Address')) }}
+              </div>
 
-            <div>
-                {{ Form::submit('Login') }}
-            </div>
-            {{ Form::close() }}
+              <div class="form-group">
+                  {{ Form::password('password', array('class'=>'form-control input-sm','placeholder'=>'Password')) }}
+              </div>
+
+              <div class="form-group">
+              {{ Form::submit('Register', array('class'=>'btn btn-info btn-block')) }}
+              </div>
+          </div>
         </div>
+      </div>
     </div>
+    {{ Form::close() }}
 </section>
 
 <!-- jQuery -->

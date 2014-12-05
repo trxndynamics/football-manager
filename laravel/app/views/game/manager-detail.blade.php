@@ -3,12 +3,14 @@
 @section('additionalCSS')
     <link rel="stylesheet" type="text/css" media="all" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" media="all" href="//cdn.datatables.net/responsive/1.0.3/css/dataTables.responsive.css">
+    <link rel="stylesheet" type="text/css" media="all" href="/assets/vendor/angular-bootstrap-datetimepicker/src/css/datetimepicker.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 @stop
 
 @section('additionalJS')
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/responsive/1.0.3/js/dataTables.responsive.js"></script>
+    <script type="text/javascript" src="/assets/vendor/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -16,62 +18,42 @@
                 bFilter: false,
                 bInfo: false
             });
+
+            $( "#datepicker" ).datepicker();
         } );
     </script>
 @stop
 
 @section('content')
     {{ Form::open(array('url' => 'game/register-manager')) }}
-    <section id="manager-detail" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Add New Manager</h2>
-                <h3>Enter The New Manager&apos;s Details</h3>
-                <br />
-                <div>
-                    {{ Form::label('name[forename]', 'First Name') }}
-                    {{ Form::text('name[forename]', '', array('class'=>'form-control')) }}
+    <div class="row centered-form">
+      <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Register Manager Details</h3>
+          </div>
+          <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    {{ Form::text('first_name', null, array('class'=>'form-control input-sm','placeholder'=>'First Name')) }}
+                  </div>
                 </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                  <div class="form-group">
+                    {{ Form::text('last_name', null, array('class'=>'form-control input-sm','placeholder'=>'Last Name')) }}
+                  </div>
+                </div>
+              </div>
 
-                <div>
-                    {{ Form::label('name[surname]', 'Last Name') }}
-                    {{ Form::text('name[surname]', '', array('class'=>'form-control')) }}
-                </div>
+              <div class="form-group">
+                {{ Form::email('email', null, array('class'=>'form-control input-sm','placeholder'=>'Email Address')) }}
+              </div>
 
-                <div>
-                    {{ Form::label('nationality', 'Nationality') }}
-                    {{ Form::select(
-                        'nationality',
-                        array('Afghan','Albanian','Algerian','American','American Samoan','Andorran','Angolan','Anguillan','Antigua &amp; Barbudan','Argentinian','Armenian','Aruban','Australian','Azeri','Bahaman')
-                        ) }}
-                </div>
-
-                <div>
-                    {{ Form::label('date_of_birth', 'Date Of Birth') }}
-                    {{ Form::text('date_of_birth', '', array('class' => 'form-control','placeholder' => 'select a date','data-datepicker' => 'datepicker')) }}
-                </div>
-
-                <div>
-                    {{ Form::label('favourite_club', 'Favourite Club') }}
-                    {{ Form::select(
-                        'favourite_club',
-                        array('Arsenal','Aston Villa')
-                        ) }}
-                </div>
-
-                <div>
-                    {{ Form::label('manage_club', 'Choose Team To Manager') }}
-                    {{ Form::select(
-                        'manage_club',
-                        array('Arsenal','Aston Villa')
-                        ) }}
-                </div>
-
-                <div>
-                    {{ Form::submit('Confirm') }}
-                </div>
-            </div>
+              {{ Form::submit('Register', array('class'=>'btn btn-info btn-block')) }}
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
     {{ Form::close() }}
 @stop
