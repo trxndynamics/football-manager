@@ -21,9 +21,10 @@
 @stop
 
 @section('content')
+
 <section id="about" class="container">
     <div class="row centered-form">
-        {{ Form::open(array('url' => 'game/generate')) }}
+        {{ Form::open(array('url' => 'game/create')) }}
         <div class="col-xs-12 col-sm-12 col-md-12">
 
             <table id="selectLeagues" class="display responsive nowrap" cellspacing="0" width="100%">

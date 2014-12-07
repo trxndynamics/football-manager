@@ -10,7 +10,6 @@
 @section('additionalJS')
     <script type="text/javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/responsive/1.0.3/js/dataTables.responsive.js"></script>
-    <script type="text/javascript" src="/assets/vendor/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -19,7 +18,37 @@
                 bInfo: false
             });
 
-            $( "#datepicker" ).datepicker();
+            var configuration = <?php echo json_encode($configuration); ?>;
+
+            $('#nation').change(function(){
+                var league  = $('#league');
+                var club    = $('#club');
+
+                var selectedNation = $('#nation').val();
+                var defaultLeague = '';
+
+                league.find('option').remove();
+                club.find('option').remove();
+
+                league.append('<option>Select A League</option>');
+                $.each(configuration['division'][selectedNation]['league'], function(key, elem){
+                    league.append('<option value="'+key+'">'+key+'</option>');
+                });
+
+                club.append('<option>Select A Club</option>');
+            });
+
+            $('#league').change(function(){
+                var selectedNation  = $('#nation').val();
+                var league          = $('#league');
+                var club            = $('#club');
+
+                club.find('option').remove();
+                club.append('<option>Select A Club</option>');
+                $.each(configuration['division'][selectedNation]['league'][league.val()]['teams'], function(key, elem){
+                    club.append('<option value="'+elem+'">'+elem.replace('_',' ')+'</option>');
+                });
+            });
         } );
     </script>
 @stop
@@ -46,8 +75,28 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                {{ Form::email('email', null, array('class'=>'form-control input-sm','placeholder'=>'Email Address')) }}
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                    {{ Form::select('nation', array_merge(['Select Nation...'], array_combine(array_keys($configuration['division']), array_keys($configuration['division']))), null, array('class'=>'form-control','id'=>'nation')) }}
+                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                      <div class="form-group">
+                      {{ Form::select('league', ['Select League...'], null, array('class'=>'form-control','id'=>'league')) }}
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                      <div class="form-group">
+                      {{ Form::select('club', ['Select Club...'], null, array('class'=>'form-control','id'=>'club')) }}
+                      </div>
+                  </div>
               </div>
 
               {{ Form::submit('Register', array('class'=>'btn btn-info btn-block')) }}

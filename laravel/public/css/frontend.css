@@ -12686,3 +12686,6 @@ nav img.crest-display {
 .player-stats-head > h1 {
   float: left;
 }
+select.form-control {
+  text-transform: capitalize;
+}

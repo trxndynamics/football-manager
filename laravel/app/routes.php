@@ -13,8 +13,14 @@ Route::get('/', 'HomeController@showWelcome');
 Route::get('login', 'AuthController@create');
 Route::get('logout', 'AuthController@destroy');
 Route::get('dashboard', 'DashboardController@index');
-Route::get('game/create', 'GameController@create');
-Route::post('game/generate', 'GameController@generate');
-Route::post('game/register-manager', 'GameController@registerManager');
+
+Route::group(['prefix'=>'game'], function(){
+    Route::get('create', 'GameController@create');
+    Route::get('register-manager', 'GameController@registerManager');
+
+    Route::post('create', 'GameController@create');
+    Route::post('register-manager', 'GameController@registerManager');
+});
+
 Route::resource('auth', 'AuthController');
 Route::resource('users', 'UsersController');
