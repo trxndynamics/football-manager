@@ -21,9 +21,11 @@
 @stop
 
 @section('content')
-    {{ Form::open(array('url' => 'game/generate')) }}
+<section id="about" class="container">
     <div class="row centered-form">
-          <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2">
+        {{ Form::open(array('url' => 'game/generate')) }}
+        <div class="col-xs-12 col-sm-12 col-md-12">
+
             <table id="selectLeagues" class="display responsive nowrap" cellspacing="0" width="100%">
                 <thead>
                     <tr>
@@ -33,24 +35,25 @@
                         <th>Active Divisions</th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    @foreach(Config::get('basegame') as $nation => $baseGameItem)
+                @foreach(Config::get('basegame') as $nation => $baseGameItem)
                     <tr>
                         <td>{{ Form::checkbox('selected['.$nation.']', $nation) }} {{ $baseGameItem['display_name'] }}</td>
                         <td>{{ Form::checkbox('full_detail['.$nation.']', 'true') }}</td>
                         <td>{{ \Carbon\Carbon::createFromFormat('m',$baseGameItem['start_month'])->format('M Y') }}</td>
-                        <td>{{
-                        Form::select('division['.$nation.'][depth]', $baseGameItem['divisions'], 0) }}</td>
+                        <td>{{ Form::select('division['.$nation.'][depth]', $baseGameItem['divisions'], 0) }}</td>
                     </tr>
-                    @endforeach
+                @endforeach
                 </tbody>
             </table>
+            <br />
+            <br />
+            <div class="form-group">
+                {{ Form::submit('Create Game', array('class'=>'btn btn-info btn-block')) }}
+            </div>
+        {{ Form::close() }}
         </div>
     </div>
-    <br />
-    <div class="form-group">
-        {{ Form::submit('Create Game', array('class'=>'btn btn-info btn-block')) }}
-    </div>
-    {{ Form::close() }}
+</section>
+
 @stop

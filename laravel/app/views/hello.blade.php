@@ -155,7 +155,7 @@
               </div>
 
               <div class="form-group">
-              {{ Form::submit('Register', array('class'=>'btn btn-info btn-block')) }}
+              {{ Form::submit('Login', array('class'=>'btn btn-info btn-block')) }}
               </div>
           </div>
         </div>
