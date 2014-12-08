@@ -5,7 +5,7 @@ class GameController extends BaseController {
 
         if(Request::isMethod('post')){
             $data = Input::only('first_name','last_name','nation','league','club');
-            var_dump($data);
+            Redirect::to('/dashboard');
         }
 
         return View::make('game/manager-detail')

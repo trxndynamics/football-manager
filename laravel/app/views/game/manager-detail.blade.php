@@ -30,12 +30,12 @@
                 league.find('option').remove();
                 club.find('option').remove();
 
-                league.append('<option>Select A League</option>');
+                league.append('<option>Select League</option>');
                 $.each(configuration['division'][selectedNation]['league'], function(key, elem){
                     league.append('<option value="'+key+'">'+key+'</option>');
                 });
 
-                club.append('<option>Select A Club</option>');
+                club.append('<option>Select Club</option>');
             });
 
             $('#league').change(function(){
@@ -44,7 +44,7 @@
                 var club            = $('#club');
 
                 club.find('option').remove();
-                club.append('<option>Select A Club</option>');
+                club.append('<option>Select Club</option>');
                 $.each(configuration['division'][selectedNation]['league'][league.val()]['teams'], function(key, elem){
                     club.append('<option value="'+elem+'">'+elem.replace('_',' ')+'</option>');
                 });
@@ -86,7 +86,7 @@
               <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="form-group">
-                      {{ Form::select('league', ['Select League...'], null, array('class'=>'form-control','id'=>'league')) }}
+                      {{ Form::select('league', ['Select a League...'], null, array('class'=>'form-control','id'=>'league')) }}
                       </div>
                   </div>
               </div>
@@ -94,12 +94,12 @@
               <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12">
                       <div class="form-group">
-                      {{ Form::select('club', ['Select Club...'], null, array('class'=>'form-control','id'=>'club')) }}
+                      {{ Form::select('club', ['Select a Club...'], null, array('class'=>'form-control','id'=>'club')) }}
                       </div>
                   </div>
               </div>
 
-              {{ Form::submit('Register', array('class'=>'btn btn-info btn-block')) }}
+              {{ Form::submit('Confirm', array('class'=>'btn btn-info btn-block')) }}
           </div>
         </div>
       </div>
